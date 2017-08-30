@@ -49,6 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201708231605502_InitialCreate.cs" />
+    <Compile Include="Migrations\201708231605502_InitialCreate.Designer.cs">
+      <DependentUpon>201708231605502_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231626492_AddGenre.cs" />
+    <Compile Include="Migrations\201708231626492_AddGenre.Designer.cs">
+      <DependentUpon>201708231626492_AddGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231638436_UpdateMovie.cs" />
+    <Compile Include="Migrations\201708231638436_UpdateMovie.Designer.cs">
+      <DependentUpon>201708231638436_UpdateMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="MovieContext.cs" />
     <Compile Include="Program.cs" />
@@ -57,6 +71,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708231605502_InitialCreate.resx">
+      <DependentUpon>201708231605502_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231626492_AddGenre.resx">
+      <DependentUpon>201708231626492_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231638436_UpdateMovie.resx">
+      <DependentUpon>201708231638436_UpdateMovie.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

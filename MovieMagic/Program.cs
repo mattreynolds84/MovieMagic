@@ -7,13 +7,15 @@ using MovieMagic.Models;
 
 namespace MovieMagic
 {
+    //check out code first migrations here: https://msdn.microsoft.com/en-us/library/jj591621(v=vs.113).aspx
+
     class Program
     {
         static void Main(string[] args)
         {
             try
             {
-                Test();
+                ReadArgs(args);
             }
             catch (Exception e)
             {
@@ -24,12 +26,26 @@ namespace MovieMagic
 
         private static void ReadArgs(string[] args)
         {
+            var ctx = new MovieContext();
+          
+
             if (args.Length > 0)
             {
                 switch (args[0])
                 {
-                    case "hi":
-                        Console.WriteLine("Hello World!");
+                    case "addMovie":
+                        Console.WriteLine();
+                        Console.WriteLine("Adding a new movie...");
+                        Console.WriteLine();
+                        Console.WriteLine("What is the movie's title?");
+                        var title = Console.ReadLine();
+
+                        var movie = new Movie();
+                        movie.Title = title;
+
+                        ctx.Movies.Add(movie);
+                        ctx.SaveChanges();
+
                         break;
                     case "foo":
                         Console.WriteLine("bar");
@@ -42,20 +58,6 @@ namespace MovieMagic
             else
             {
                 Console.WriteLine("Unable to process your request.");
-            }
-        }
-
-        private static void Test()
-        {
-            var ctx = new MovieContext();
-            ctx.Movies.Add(new Movie(){Title = "Test Title"});
-            ctx.SaveChanges();
-
-
-            var movies = ctx.Movies.ToList();
-            foreach (var movie in movies)
-            {
-                Console.WriteLine($"{movie.Id}: {movie.Title}");
             }
         }
     }
